@@ -24,6 +24,7 @@ public class Astronaut {
         this.arrival = arrival;
     }
     
+    @Override
     public String toString() {
         DecimalFormat decFormatter = new DecimalFormat(".#");
         DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -34,4 +35,3 @@ public class Astronaut {
                dtFormatter.format(arrival) + "\n";
     }
 }
-

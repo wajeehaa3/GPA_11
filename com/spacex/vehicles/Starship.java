@@ -25,7 +25,7 @@ public class Starship {
     public static void main(String[] args) {
     
         // create a space station and display it
-        Starship ss = new Starship("SN15", 4989516 /* base weight: 11M lbs*/);
+        Starship ss = new Starship("SN15", 4989516.07 /* base weight: 11M lbs*/);
         System.out.println(ss);
 
         // add some astronauts
@@ -77,7 +77,6 @@ public class Starship {
     
     public static double getRandomInRange(double min, double max) {
         return(Math.random() * (max - min) + min);
-        
     }
     
     // add an astronaut
