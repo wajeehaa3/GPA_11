@@ -32,6 +32,6 @@ public class Astronaut {
         return "name: " + name + "\n" + 
                "height: " + decFormatter.format(heightCm) + " (cm)\n" +
                "weight: " + decFormatter.format(weightKg) + " (kg)\n" +
-               dtFormatter.format(arrival) + "\n";
+               "arrival: " + dtFormatter.format(arrival) + "\n";
     }
 }
