@@ -1,12 +1,14 @@
 // Starship.java
-// D. Singletary 
-// 3/20/23
+// W. Rizvi 
+// 04/14/24
 // class representing SpaceX Starship
 
 package com.spacex.vehicles;
 
 import com.spacex.personnel.Astronaut;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
 
@@ -45,20 +47,31 @@ public class Starship {
         final double MIN_WT = 50, MAX_WT = 95; // cm
         final double MIN_HT = 149.5, MAX_HT = 190.5; // cm
         
+        // Calculate period and estimated departure date
+        LocalDate estimatedDepartureDate = LocalDate.now().plusDays(7); // Example: 7 days after arrival
+        Period period = Period.ofDays(7); // Example: Stay for 7 days
+        
         ss.addAstronaut("Megan McArthur", 
-              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT));
+              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT),
+              period, estimatedDepartureDate);
         ss.addAstronaut("Woody Hoburg",
-              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT));
+              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT),
+              period, estimatedDepartureDate);
         ss.addAstronaut("Andrey Fedyaev", 
-              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT));
+              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT),
+              period, estimatedDepartureDate);
         ss.addAstronaut("Shannon Walker", 
-              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT));
+              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT),
+              period, estimatedDepartureDate);
         ss.addAstronaut("Jessica Watkins",
-              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT));
+              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT),
+              period, estimatedDepartureDate);
         ss.addAstronaut("Koichi Wakata",
-              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT));
+              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT),
+              period, estimatedDepartureDate);
         ss.addAstronaut("Matthias Maurer",
-              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT)); 
+              getRandomInRange(MIN_WT, MAX_WT), getRandomInRange(MIN_HT, MAX_HT),
+              period, estimatedDepartureDate); 
         
         // set the altitude (low-earth orbit max
         // https://www.nasa.gov/leo-economy/faqs)
@@ -81,12 +94,13 @@ public class Starship {
     
     // add an astronaut
     public void addAstronaut(String name, 
-                double heightCm, double weightKg) {
+                double heightCm, double weightKg,
+                Period period, LocalDate estimatedDepartureDate) {
         LocalDateTime ldtArrival = LocalDateTime.now();
-        astronauts.add(new Astronaut(name, heightCm, weightKg, ldtArrival));
+        astronauts.add(new Astronaut(name, heightCm, weightKg, ldtArrival, period, estimatedDepartureDate));
         this.weightKg += weightKg;
     }
-    
+        
     // set the altitude
     public void setAltitude(double altitudeKm) {
         this.altitudeKm = altitudeKm;
